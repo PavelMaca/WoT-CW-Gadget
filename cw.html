@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>WoT CW</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=8">
+
+    <script type="text/javascript" src="external/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript" src="external/json2.js"></script>
+    <script type="text/javascript" src="external/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="external/jquery.slimscroll.js"></script>
+    <script type="text/javascript" src="debug.js"></script>
+    <script type="text/javascript" src="cw.js"></script>
+    <script type="text/javascript" src="audioManager.js"></script>
+    <script type="text/javascript" src="external/SettingsManager.js"></script>
+
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <script type="text/javascript">
+        var isMockAjax = false;
+        var isDebug = false;
+        if (isDebug) {
+            document.write('<link rel="stylesheet" type="text/css" href="css/styleDebug.css">');
+        }
+        var isSidebar = typeof(System) != "undefined";
+        if (isSidebar) {
+            System.Gadget.settingsUI = "settings.html";
+
+            System.Gadget.onDock = CheckDockState;
+            System.Gadget.onUndock = CheckDockState;
+        }
+        function load() {
+            loadGadget();
+        }
+        function disableOnclick() {
+            return false;
+        }
+    </script>
+</head>
+<body onLoad="load()" onclick="disableOnclick()" class="">
+<g:background id="background" src="img/background.png" style="display:block;">
+    <div id="content">
+        <div id="innerContent">
+            <div class="row header">
+                <div>
+                    <div class="left">Time</div>
+                    <div class="middle">Map</div>
+                    <div id="reload" onclick="getData()"></div>
+                </div>
+            </div>
+            <div id="data" class="row">
+            </div>
+        </div>
+    </div>
+    <span id="debugContainer"></span>
+
+</g:background>
+<object id="Player" classid="clsid:6BF52A52-394A-11d3-B153-00C04F79FAA6"
+        height="0" width="0">
+    <param name="uiMode" value="none" />
+    <param name="Volume" value="50" />
+    <param name="autoStart" value="true" />
+    <param name="SendPlayStateChangeEvents" value="True" />
+</object>
+
+</body>
+</html>
