@@ -1,0 +1,71 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="css/reset.css"/>
+		<link rel="stylesheet" href="css/jquery-ui.min.css"/>
+		<link rel="stylesheet" href="css/style.css"/>
+		
+		<script type="text/javascript" src="js/libs/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/libs/jquery-ui.min.js"></script>
+		<script type="text/javascript" src="js/libs/json2.js"></script>
+
+		<script type="text/javascript" src="js/gadget.js"></script>
+		<script type="text/javascript" src="js/api.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
+	</head>
+	<body>
+		<table>
+			<thead>
+				<tr>
+					<th>Time</th>
+					<th>Map</th>
+					<th>&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr id="rowTamplate" style="display: none" onclick="GADGET.toggleDetail(this);">
+					<td>
+						<p class="battleTime">--:--</p>
+						<p class="timer"></p>
+					</td>
+					<td>
+						<p class="map">-</p>
+						<p class="province"></p>
+					</td>
+					<td>
+						<a class="url" href="">&nbsp;</a>
+					</td>
+				</tr>
+				
+				<tr data-province-id="YU_08" onclick="GADGET.toggleDetail(this);">
+					<td>
+						<p class="battleTime">19:30</p>
+						<p class="timer">02:10:55</p>
+					</td>
+					<td>
+						<p class="map">Horský průsmyk</p>
+						<p class="province">Georgia</p>
+					</td>
+					<td>
+						<a class="url" href="http://google.com"></a>
+					</td>
+				</tr>
+				<tr data-province-id="EU_10" onclick="GADGET.toggleDetail(this);">
+					<td>
+						<p class="battleTime">19:30</p>
+						<p class="timer">02:10:55</p>
+					</td>
+					<td>
+						<p class="map">Horský průsmyk</p>
+						<p class="province">Georgia</p>
+					</td>
+					<td>
+						<a class="url" href="http://google.com"></a>
+					</td>
+				</tr>
+			</tbody>
+			
+		</table>
+		<div id="debug" style="background-color: yellow">----</div>
+	</body>
+</html>

@@ -1,187 +1,62 @@
-body {
-    font-family: Segoe UI;
-    font-size:11px;
-    width:130px;
-    height:115px;
-    margin:0px;
-    padding:0px;
-    color:white;
+body
+{
+	margin: 0;
+	width: 150px;
+	height: 300px;
+	background-color: red;
+
+	font-family: Segoe UI;
+	font-size:11px;
+	border: 1px solid #e0e0e0;
+}
+	body#detail {
+		border-right: none;
+	}
+
+
+table{
+	width: 100%;
+	background-color: #FFF;
+}
+	#detail table{
+	}
+
+table th {
+	color: #FFF;
+	padding: 5px;
+	background-color: #4e342e;
 }
 
-body.large {
-    width:195px;
-    height:215px;
+table tbody tr {
+	cursor: pointer;
+}
+	#detail table tr {
+		cursor: auto;
+	}
+
+table tr td {
+	border-bottom: 1px solid #e0e0e0;
+	padding: 2px 0 3px 0;
+	text-align: center;
+	vertical-align: middle;
+}
+	#detail table tr td{
+		text-align: left;
+	}
+table tr.selected {
+	background-color: #70F50A;
 }
 
-.left, .middle, .map, #reload {
-    display: inline-block;
-    position: relative;
-}
-.left {
-    font-size:11px;
-    width: 34px;
-    vertical-align:top;
+
+a.url {
+	width: 16px;
+	height: 16px;
+	display: block;
+	background: url(../img/earth26.png);
 }
 
-.large .left {
-    width: 44px;
-    font-size: 13px;
+#debug {
+	height: 100px;
+	overflow-y: scroll;
 }
 
-.middle {
-    font-size: 11px;
-    width: 67px;
-    left: 2px;
-    vertical-align:top;
-    text-align: center;
-}
-
-.large .middle {
-    font-size: 13px;
-    width: 118px;
-}
-
-.map {
-    top: 7px;
-    left: 1px;
-}
-
-.map img {
-    text-decoration: none;
-    border: none;
-    width: 16px;
-    height: 16px;
-}
-
-.greenTime {
-    color: #70F50A;
-}
-.yellowTime {
-    color: yellow;
-}
-.redTime {
-    color: #ED9600;
-}
-
-#reload {
-    background-image: url(../img/reload.png);
-    background-repeat: no-repeat;
-    width: 16px;
-    height: 16px;
-    left: -10px;
-    top: 0px;
-    cursor: pointer;
-}
-
-#content div {
-    overflow:hidden;
-}
-.countdown {
-    font-size: 10px;
-}
-
-.large .countdown {
-    font-size: 11px;
-}
-
-.separator {
-    width: 117px;
-    border-top: 1px solid #D4E8C5;
-}
-
-.large .separator {
-    width: 184px;
-}
-
-#settingsbody {
-    margin: 0;
-    width: 230px;
-    height: 400px;
-    overflow: hidden;
-}
-
-.float {
-    display: inline-block;
-}
-
-.example {
-    font-size: 10px;
-}
-
-p {
-    word-break: break-all;
-    margin-bottom: 3px;
-    margin-top: 3px;
-}
-
-#innerContent {
-    height: 88px;
-    width: 129px;
-}
-
-.large #innerContent {
-    height: 118px;
-    width: 165px;
-}
-
-#content {
-    position: absolute;
-    top: 5px;
-    left: 5px;
-    height: 93px;
-    width: 125px;
-}
-
-.large #content {
-    height: 187px;
-    width: 190px;
-    font-family: "Trebuchet MS";
-}
-
-.provinceName {
-    font-size: 10px;
-    color: #588BE8;
-}
-
-.large .provinceName {
-    font-size: 11px;
-}
-
-#soundSettings {
-    border-top: 1px solid gray;
-}
-
-#soundSettings .soundTime {
-    display: inline-block;
-}
-
-#soundSettings .soundButton {
-    width: 75px;
-    padding: 1px;
-    display: inline-block;
-}
-
-.slider {
-    width: 150px;
-}
-
-.soundContainer {
-    margin-left: 3px;
-    margin-top: 3px;
-    margin-bottom: 4px;
-}
-
-#settings input[type=text] {
-    margin-top: 3px;
-    margin-bottom: 3px;
-    font-size: 12px;
-    font-family: Segoe UI;
-}
-
-#settings #volumeControl{
-    margin-left: 40px;
-}
-
-#soundSettings {
-    margin-bottom: 5px;
-}

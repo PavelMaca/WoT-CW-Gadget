@@ -1,21 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <gadget>
-	<name>WoT CW Gadget 0.7</name>
-	<namespace>wot</namespace>
-	<version>0.7</version>
-	<author name="">
-		<logo src="icon.png" />
-	</author>
-	<description>Timer for clan wars. Test 0.71</description>
-	<icons>
-		<icon height="100" width="100" src="icon.png" />
-	</icons>
-	<hosts>
-		<host name="sidebar">
-			<base type="HTML" apiVersion="1.0.0.0" src="cw.html" />
-			<permissions>Full</permissions>
-			<platform minPlatformVersion="1.0"/>
-			<defaultImage src="icon.png" />
-		</host>
-	</hosts>
+  <name>WoT ClanWars</name>
+  <namespace>assassik</namespace>
+  <version>1.0</version>
+  <author name="Assassik">
+    <info url="msdn.microsoft.com" />
+  </author>
+  <description>World of tanks CW gadget.</description>
+  <icons>
+    <icon height="48" width="48" src="icon.png" />
+  </icons>
+  <hosts>
+    <host name="sidebar">
+      <base type="HTML" apiVersion="1.0.0" src="index.html" />
+      <permissions>Full</permissions>
+      <platform minPlatformVersion="1.0" />
+      <defaultImage src="icon.png" />
+    </host>
+  </hosts>
 </gadget>
