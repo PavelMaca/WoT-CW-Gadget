@@ -36,8 +36,14 @@ var Provinces = new function () {
 				console.log('Provinces: loaded');
 				for (var province_id in data.data) {
 					Provinces.data[province_id] = data.data[province_id];
+					
+					var clan_id = data.data[province_id].clan_id;
+					if(!Clans.is(clan_id)){
+						Clans.addToQueue(clan_id);
+					}
 				}
-				callback();
+				
+				Clans.loadQueue(callback);
 			});
 		} else {
 			callback();

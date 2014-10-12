@@ -9,12 +9,11 @@ var Battles = new function () {
 
 			//load additional info
 			for (var i = 0; i < Battles.data.length; i++) {
-
+				console.log('battle: '+i);
 				var provinces = Battles.data[i].provinces;
 				for (var a = 0; a < provinces.length; a++) {
-					console.log('ceck prov:' + provinces[a]);
 					if (!Provinces.is(provinces[a])) {
-						console.log('not loaded');
+						console.log('Province '+provinces[a]+' not loaded.');
 						Provinces.addToQueue(provinces[a]);
 					}
 				}
@@ -22,6 +21,19 @@ var Battles = new function () {
 
 			Provinces.loadQueue(map_id, callback);
 		});
+	};
+	
+	this.getBattleTime = function(battle){
+		if(battle.time > 0){
+			var time = new Date(battle.time * 1000);
+			return [time.getHours(), time.getMinutes(), time.getSeconds()];
+		}else{
+			//use prime time
+			var now = new Date()
+			var offset = now.getTimezoneOffset() / 60;
+			var province = Provinces.get(battle.provinces[0]);
+			return [parseInt(province.prime_time) - offset, '00', '+'];
+		}
 	};
 };
 

@@ -29,17 +29,15 @@ var WG_API = new function () {
 			}
 		}
 		$.getJSON(this.url + section, params, success);
-
-		return;
 	};
 
 
 	this.getClanWarsBattles = function (clan_id, map_id, callback) {
 		this.callApi('globalwar/battles/', {
 			'clan_id': clan_id,
-			'map_id': map_id
+			'map_id': map_id,
+			'language': this.language
 		}, callback);
-		return;
 	};
 
 	this.getClanWarsProvinces = function (map_id, province_id, callback) {
@@ -48,18 +46,15 @@ var WG_API = new function () {
 			'province_id': province_id,
 			'language': this.language
 		}, callback);
-		return;
 	};
 
 	this.getClanDetail = function (clan_id, callback) {
 		this.callApi('clan/info/', {
 			'clan_id': clan_id
 		}, callback);
-		return;
 	};
 
 	this.getClanWarsMaps = function (callback) {
 		this.callApi('globalwar/maps/', {}, callback);
-		return;
 	};
 };

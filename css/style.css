@@ -1,29 +1,28 @@
 body
 {
 	margin: 0;
-	width: 150px;
-	height: 300px;
-	background-color: red;
-
+	width: 170px;
 	font-family: Segoe UI;
 	font-size:11px;
 	border: 1px solid #e0e0e0;
+	height: 500px;
 }
 	body#detail {
-		border-right: none;
+		width: 170px;
 	}
-
 
 table{
 	width: 100%;
 	background-color: #FFF;
 }
 	#detail table{
+		position: absolute;
+		top: 0px;
 	}
 
 table th {
 	color: #FFF;
-	padding: 5px;
+	padding: 5px 0;
 	background-color: #4e342e;
 }
 
@@ -36,12 +35,21 @@ table tbody tr {
 
 table tr td {
 	border-bottom: 1px solid #e0e0e0;
-	padding: 2px 0 3px 0;
+	padding: 2px 3px 3px 3px;
 	text-align: center;
 	vertical-align: middle;
 }
-	#detail table tr td{
+	#detail table tbody tr td{
 		text-align: left;
+	}
+	
+	#detail table tbody tr th{
+		width: 40%;
+		padding-left: 7px;
+		text-align: left;
+		background-color: #FFF;
+		color: #000;
+		border-bottom: 1px solid #e0e0e0;
 	}
 table tr.selected {
 	background-color: #70F50A;
@@ -55,8 +63,27 @@ a.url {
 	background: url(../img/earth26.png);
 }
 
+.ico_gold {
+	background: url("../img/currency-ico.png") no-repeat scroll -13px 0 transparent;
+	display: inline-block;
+	height: 10px;
+	width: 13px;
+	padding: 0;
+}
+
+td.mapImage {
+	padding: 0px;
+}
+
 #debug {
 	height: 100px;
 	overflow-y: scroll;
+	background-color: yellow;
+	
 }
+	#detail #debug{
+		position: absolute;
+		bottom: 0px;
+		width: 100%;
+	}
 

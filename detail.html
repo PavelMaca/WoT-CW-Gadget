@@ -2,49 +2,69 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="css/reset.css"/>
-		<link rel="stylesheet" href="css/jquery-ui.min.css"/>
 		<link rel="stylesheet" href="css/style.css"/>
-
+		
 		<script type="text/javascript" src="js/libs/jquery-1.11.1.min.js"></script>
-		<script type="text/javascript" src="js/libs/jquery-ui.min.js"></script>
 		<script type="text/javascript" src="js/libs/json2.js"></script>
 
+		<script type="text/javascript" src="js/models/MaptacticProxy.js"></script>
+		
 		<script type="text/javascript" src="js/models/WG_API.js"></script>
 		<script type="text/javascript" src="js/models/Maps.js"></script>
+		<script type="text/javascript" src="js/models/Clans.js"></script>
 		<script type="text/javascript" src="js/models/Provinces.js"></script>
 		<script type="text/javascript" src="js/models/Battles.js"></script>
-
+		
+		
 		<script type="text/javascript" src="js/GADGET.js"></script>
 		<script type="text/javascript" src="js/GADGET_DETAIL.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
 	</head>
 	<body id="detail">
 		<table>
-			<tr>
-				<td>Province:</td>
-				<td class="provinceName"></td>
-			</tr>
-			<tr>
-				<td>Map:</td>
-				<td class="map"></td>
-			</tr>
-			<tr>
-				<td>Time:</td>
-				<td class="battleTime"></td>
-			</tr>
-			<tr>
-				<td>Owner:</td>
-				<td><a class=owner" href="">TEX-X</a></td>
-			</tr>
-			<tr>
-				<td>Type:</td>
-				<td class="type">landing</td>
-			</tr>
-			<tr>
-				<td>:</td>
-				<td></td>
-			</tr>
+			<thead>
+				<tr>
+					<th colspan="2">Detail</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>Province</th>
+					<td> <a class="province">-</a></td>
+				</tr>
+				<tr>
+					<th>Map</th>
+					<td><a class="map">-</a></td>
+				</tr>
+				<tr>
+					<th>Time</th>
+					<td class="battleTime">-</td>
+				</tr>
+				<tr>
+					<th>Owner</th>
+					<td><a class="owner" href=""><span class="tag">-</span> <img class="logo" width="16" /></a></td>
+				</tr>
+				<tr>
+					<th>Type</th>
+					<td class="type">-</td>
+				</tr>
+				<tr>
+					<th>Income</th>
+					<td>
+						<span class="income">-</span>
+						<span class="ico_gold"></span>
+					</td>
+				</tr>
+				<tr>
+					<th>Chips</th>
+					<td>-</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="mapImage">
+					</td>
+				</tr>
+			</tbody>
 		</table>
-		<div id="debug" style="background-color: yellow">----</div>
+		<div id="debug">DEBUG:</div>
 	</body>
 </html>

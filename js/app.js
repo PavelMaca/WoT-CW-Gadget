@@ -22,7 +22,6 @@ if (IS_SIDEBAR) {
 
 			return keys;
 		};
-
 	}
 }
 
@@ -58,6 +57,9 @@ function initDetail(){
 // Init application
 $(document).ready(function () {
 	try {
+		if(!DEBUG){
+			$("#debug").remove();
+		}
 		if($('body#detail').length){
 			initDetail();
 		}else{

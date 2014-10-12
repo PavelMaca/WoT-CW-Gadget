@@ -1,36 +1,49 @@
-var GADGET_DETAIL = new function(){
+var GADGET_DETAIL = new function () {
 	this.battle = false;
 	this.clan = false;
 	this.province = false;
-	
-	this.showInfo = function(){
-		var dataBattle = $(System.Gadget.document).find('tr.selected').attr('data-battle');
-		if(dataBattle){
-			this.battle = JSON.parse(dataBattle);
 
-			$('.type').text(battle.type);
+	this.showInfo = function () {
+		console.log('showInfo()');
+		var data = $(System.Gadget.document).find('tr.selected').attr('data');
+		if (!data) {
+			console.log('no data');
+			return;
+		}
+		data = JSON.parse(data);
+		
 
-			$('.map').text(battle.arenas[0]['name_i18n']);
+		$('.type').text(data.type);
+		
+		$('.map').text(data.area.name);
+		$('.map').attr('href', MaptacticProxy.getMapUrl(data.area.id, 'map'));
 
-			var battle_time_text;
-			if (battle.time > 0) {
-				var battle_time = new Date(battle.time * 1000);
-				battle_time_text = battle_time.getHours() + ':' + battle_time.getMinutes();
-			} else {
-				battle_time_text = '--:--';
-			}
-			$('.battleTime').text(battle_time_text);
+		$('.battleTime').text(data.battleTime);
+		
+		$('.province').text(data.province.name);
+		$('.province').attr('href', data.province.url);
+		
+		$('.owner .tag').text(data.owner.tag);
+		$('.owner').attr('href', data.owner.url);
+		$('.owner .logo').attr('src', data.owner.logo);
+		
+		$('.income').text(data.income);
+		
+		var minimap =  MaptacticProxy.getMapUrl(data.area.id, 'thumb');
+		if(minimap){
+			var img = $('<img />');
+			img.attr('src', MaptacticProxy.getMapUrl(data.area.id, 'thumb'));
+			img.attr('height', 168);
+			img.attr('width', 168);
+			$('.mapImage').append(img);;
 		}
 		
-		var dataProvince = $(System.Gadget.document).find('tr.selected').attr('data-province');
-		if(dataProvince){
-			this.province = JSON.parse(dataProvince);
-		}
-		
+		GADGET.setBodyHeight();
+
 	};
-	
-	this.refreshInfo = function(){
-		
+
+	this.refreshInfo = function () {
+
 	};
-	
+
 };
