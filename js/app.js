@@ -36,6 +36,8 @@ if (DEBUG !== true) {
 function init(){
 	console.log('init()');
 	
+	System.Gadget.settingsUI = "settings.html";
+	
 	GADGET.init();
 	GADGET.loadBattles(function(){
 		GADGET.refreshInfo();
