@@ -3,7 +3,7 @@ var WG_API = new function () {
 	this.application_id = null;
 	this.url = null;
 	this.language = null;
-
+	
 	this.init = function (application_id, server, language) {
 		this.application_id = application_id;
 		this.url = "https://api.worldoftanks." + server + "/wot/";
@@ -56,5 +56,12 @@ var WG_API = new function () {
 
 	this.getClanWarsMaps = function (callback) {
 		this.callApi('globalwar/maps/', {}, callback);
+	};
+	
+	this.searchClan = function(search, limit, callback){
+		this.callApi('clan/list/', {
+			'search': search,
+			'limit': limit
+		}, callback);
 	};
 };

@@ -1,22 +1,41 @@
+body, html {
+   margin:0;
+   padding:0;
+}
+
 body
 {
 	margin: 0;
 	width: 170px;
 	font-family: Segoe UI;
-	font-size:11px;
+	font-size: 11px;
 	border: 1px solid #e0e0e0;
+	overflow: hidden;
 }
 	body#detail {
 		width: 170px;
 	}
+	
+	body#settings {
+		width: 200px;
+		height: 300px;
+		border: none;
+	}
 
+	table {
+		border-collapse: collapse;
+		border-spacing: 10px;
+	}
 table{
 	width: 100%;
-	background-color: #FFF;
 }
-	#detail table{
-		position: absolute;
-		top: 0px;
+	#index table,
+	#detail table {
+		background-color: #FFF;
+	}
+	
+	table td {
+		padding: 10px;
 	}
 
 #index table th,
@@ -31,23 +50,37 @@ table{
 		border-bottom: 1px solid #e0e0e0;
 		text-align: left;
 	}
+	
+	#settings table th {
+		text-align: left;
+		width: 40%;
+	}
 
-#index table tr {
+#index table tr.row {
 	cursor: pointer;
 }
-	#index table tr.selected {
+	#index table tr.selected td {
 		background-color: #70F50A;
 	}
 
 table tr td {
-	border-bottom: 1px solid #e0e0e0;
 	padding: 2px 3px 3px 3px;
-	vertical-align: middle;
 }
+	#index table tr td,
+	#detail table tr td{
+		border-bottom: 1px solid #e0e0e0;
+		vertical-align: middle;
+	}
 
 	#index td {
 		text-align: center;
 	}
+	#detail td,
+	#detail tbody th {
+		padding: 5px 0 5px 0;
+		vertical-align: top;
+	}
+	
 	
 	
 #index a.url {
@@ -81,3 +114,9 @@ td.mapImage {
 		width: 100%;
 	}
 
+
+#settings #clanlist a {
+	display: block;
+	cursor: pointer;
+	margin-top: 3px;
+}

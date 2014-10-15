@@ -1,5 +1,5 @@
 // Global varialbes
-var DEBUG = true;
+var DEBUG = false;
 var IS_SIDEBAR = typeof (System) != "undefined";
 
 // Setup enviroment
@@ -33,40 +33,47 @@ if (DEBUG !== true) {
 	};
 }
 
-function init(){
+function init() {
 	console.log('init()');
-	
+
 	System.Gadget.settingsUI = "settings.html";
-	
+
 	GADGET.init();
-	GADGET.loadBattles(function(){
-		GADGET.refreshInfo();
-	});
-	
-			
+	GADGET.loadBattles();
+
+
 	//System.Gadget.Flyout.file = "detail.html";
 	//System.Gadget.Flyout.show = true;
-};
+}
+;
 
-function initDetail(){
-	console.log('initFlyout()');
+function initDetail() {
+	console.log('initDetail()');
 
 	GADGET.init();
 	GADGET_DETAIL.showInfo();
 
+}
+;
+
+function initSettings() {
+	GADGET.init();
+	GADGET_SETTINGS.init();
 };
 
 // Init application
 $(document).ready(function () {
 	try {
-		if(!DEBUG){
+		if (!DEBUG) {
 			$("#debug").remove();
 		}
-		if($('body#detail').length){
+		if ($('body').is('#detail')) {
 			initDetail();
-		}else{
+		} else if ($('body').is('#settings')) {
+			initSettings();
+		} else {
 			init();
-		}	
+		}
 	} catch (e) {
 		console.log(e.message);
 	}

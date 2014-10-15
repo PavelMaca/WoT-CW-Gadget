@@ -6,9 +6,8 @@ var GADGET = new function () {
 	this.language = 'cs';
 
 	/** Clan setting */
-	this.clan_id = '500006679';
+	this.clan_id = '500035588';
 	this.map_id = '1';
-	this.time_zone = 1; //eq. +1 hour
 
 	/**
 	 * @var int Refrash rate for CW info in secunds
@@ -30,11 +29,11 @@ var GADGET = new function () {
 		 */
 	};
 
-	this.loadBattles = function (fn) {
+	this.loadBattles = function () {
 		Maps.load(function () {
 			//setTimeout(this.reloadData, this.refrashRate * 1000);
 			Battles.reload(GADGET.clan_id, GADGET.map_id, function () {
-				fn();
+				GADGET.refreshInfo();
 			});
 		});
 	};
@@ -56,6 +55,8 @@ var GADGET = new function () {
 		var keys = Object.keys(times);
 		keys.sort();
 
+		System.Gadget.Flyout.show = false;
+		$('table .row').remove();
 		for (var time in times) {
 			for (var i = 0; i < times[time].length; i++) {
 				this.createRow(Battles.data[times[time][i]]);
@@ -74,6 +75,9 @@ var GADGET = new function () {
 		}
 
 		var row = $('#rowTamplate').clone();
+		row.removeAttr('id');
+		row.addClass('row');
+		
 		var data = {};
 
 		//area name
@@ -167,8 +171,8 @@ var GADGET = new function () {
 
 	// Sets the height of the body
 	this.setBodyHeight = function () {
-		$('body').height('400px');
-		//var fix = ($('body#detail').length ? 0 : 50);
-		//$('body').height($('table').height() + $('#debug').height() - fix);
+		var debug = $('#debug').height();
+		var height = Number($('table').height()) + Number(debug);
+		$('body').height(height+'px');
 	}
 };

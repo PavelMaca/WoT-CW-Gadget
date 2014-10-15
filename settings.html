@@ -1,8 +1,56 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" href="css/reset.css"/>
+		<link rel="stylesheet" href="css/style.css"/>
+		
+		<script type="text/javascript" src="js/libs/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="js/libs/json2.js"></script>
+		
+		<!--<script type="text/javascript" src="js/models/MaptacticProxy.js"></script>-->
+
+		<script type="text/javascript" src="js/models/WG_API.js"></script>
+		<script type="text/javascript" src="js/models/Maps.js"></script>
+		<script type="text/javascript" src="js/models/Clans.js"></script>
+		
+		<script type="text/javascript" src="js/models/Provinces.js"></script>
+		<script type="text/javascript" src="js/models/Battles.js"></script>
+		
+		<script type="text/javascript" src="js/GADGET.js"></script>
+		<!--<script type="text/javascript" src="js/GADGET_DETAIL.js"></script>-->
+		<script type="text/javascript" src="js/GADGET_SETTINGS.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
 	</head>
 	<body id="settings">
-		
+		<table>
+			<tr>
+				<th>Server</th>
+				<td><select id="server" name="server"></select></td>
+			</tr>
+			<tr>
+				<th>Language</th>
+				<td><select id="language" name="language"></select></td>
+			</tr>
+			<tr id="selectedClan">
+				<th>Clan</th>
+				<td>
+					<img class="logo" style="display: none;" />
+					<span class="tag">NOT SELECTED</span><br />
+					<small class="id"></small><br/>
+					<a onclick="GADGET_SETTINGS.changeClan();" href="#">Change</a>
+				</td>
+			</tr>
+			<tr id="searchClan" style="display: none;">
+				<th>Search clan</th>
+				<td>
+					<input name="clan" type="text" maxlength="9" size="9" onkeyup="GADGET_SETTINGS.updateClan(this);" />
+					<div id="clanlist">
+						
+					</div>
+				</td>
+			</tr>
+		</table>
+		<div id="debug">DEBUG:</div>		
 	</body>
 </html>
