@@ -6,12 +6,13 @@ var Battles = new function () {
 		WG_API.getClanWarsBattles(clan_id, map_id, function (data) {
 			console.log('Battles: loaded');
 			Battles.data = data.data[GADGET.clan_id];
-
+			
 			//load additional info
 			for (var i = 0; i < Battles.data.length; i++) {
 				console.log('battle: '+i);
 				var provinces = Battles.data[i].provinces;
 				for (var a = 0; a < provinces.length; a++) {
+					
 					if (!Provinces.is(provinces[a])) {
 						console.log('Province '+provinces[a]+' not loaded.');
 						Provinces.addToQueue(provinces[a]);
@@ -26,7 +27,12 @@ var Battles = new function () {
 	this.getBattleTime = function(battle){
 		if(battle.time > 0){
 			var time = new Date(battle.time * 1000);
-			return [time.getHours(), time.getMinutes(), time.getSeconds()];
+			
+			var minutes = time.getMinutes();
+			if(minutes < 10){
+				minutes = '0'+minutes;
+			}
+			return [time.getHours(), minutes, time.getSeconds()];
 		}else{
 			//use prime time
 			var now = new Date()

@@ -1,12 +1,12 @@
 // Global varialbes
-var DEBUG = false;
+var DEBUG = true;
 var IS_SIDEBAR = typeof (System) != "undefined";
 
 // Setup enviroment
 if (IS_SIDEBAR) {
 	var console = {
 		log: function (str) {
-			$('#debug').append('<p>' + str + '</p>');
+			$('#debug').prepend('<p>' + str + '</p>');
 		}
 	};
 	// Fuck IE7
@@ -36,7 +36,9 @@ if (DEBUG !== true) {
 function init() {
 	console.log('init()');
 
-	System.Gadget.settingsUI = "settings.html";
+	if(IS_SIDEBAR){
+		System.Gadget.settingsUI = "settings.html";
+	}
 
 	GADGET.init();
 	GADGET.loadBattles();

@@ -11,6 +11,9 @@ var WG_API = new function () {
 
 		//Set jQuery tu support cross domain reguests
 		$.support.cors = true;
+		
+		//disable cache
+		$.ajaxSetup({ cache: false });
 	};
 
 	/**

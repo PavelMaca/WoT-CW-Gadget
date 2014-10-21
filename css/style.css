@@ -1,6 +1,5 @@
-body, html {
-   margin:0;
-   padding:0;
+small {
+	font-size: 9px;
 }
 
 body
@@ -17,7 +16,7 @@ body
 	}
 	
 	body#settings {
-		width: 200px;
+		width: 250px;
 		height: 300px;
 		border: none;
 	}
@@ -108,12 +107,6 @@ td.mapImage {
 	background-color: yellow;
 	
 }
-	#detail #debug{
-		position: absolute;
-		bottom: 0px;
-		width: 100%;
-	}
-
 
 #settings #clanlist a {
 	display: block;

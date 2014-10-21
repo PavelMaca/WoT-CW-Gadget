@@ -32,22 +32,49 @@
 				<th>Language</th>
 				<td><select id="language" name="language"></select></td>
 			</tr>
-			<tr id="selectedClan">
+			<tr><td>&nbsp;</td></tr>
+			<tr id="selectedClan"  style="display: none;">
 				<th>Clan</th>
 				<td>
 					<img class="logo" style="display: none;" />
-					<span class="tag">NOT SELECTED</span><br />
+					<span class="tag"></span><br />
 					<small class="id"></small><br/>
-					<a onclick="GADGET_SETTINGS.changeClan();" href="#">Change</a>
+					<button onclick="GADGET_SETTINGS.changeClan();" >Change</button>
 				</td>
 			</tr>
-			<tr id="searchClan" style="display: none;">
+			<tr class="search">
+				<td colspan="2"><small>Make sure you have selected server first.</small></td>
+			</tr>
+			<tr class="search" id="searchClan" >
 				<th>Search clan</th>
 				<td>
 					<input name="clan" type="text" maxlength="9" size="9" onkeyup="GADGET_SETTINGS.updateClan(this);" />
 					<div id="clanlist">
 						
 					</div>
+				</td>
+			</tr>
+			<tr class="search">
+				<td colspan="2">
+					<p><small>Search by clan TAG, or CLAN ID.</small></p>
+					<br />
+					<p><small>ID can be found in clan URL: http://worldoftanks.eu/community/<br />clans/<b style="color:red">500004298</b>/</small></p>
+				</td>
+			</tr>
+			<tr><td>&nbsp;</td></tr>
+			<tr>
+				<td colspan="2">
+					<input type="checkbox" name="enable_sound" /><label for="enable_sound">Enable sound notification</label>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<input type="file" name="sound_file" size="10" />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					Play <input type="text" size="3" maxlength="4" value="900"/> seconds before battle.
 				</td>
 			</tr>
 		</table>

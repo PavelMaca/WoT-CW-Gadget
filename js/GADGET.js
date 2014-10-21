@@ -7,7 +7,7 @@ var GADGET = new function () {
 
 	/** Clan setting */
 	this.clan_id = '500035588';
-	this.map_id = '1';
+	this.map_id = '1'; //TODO: načíst podle clanu (nově k dispozici)
 
 	/**
 	 * @var int Refrash rate for CW info in secunds
@@ -40,6 +40,8 @@ var GADGET = new function () {
 
 	this.refreshInfo = function () {
 		console.log('refreshInfo()');
+		
+		console.log(Battles.data.length);
 
 		var times = {};
 		for (var i = 0; i < Battles.data.length; i++) {
@@ -55,13 +57,31 @@ var GADGET = new function () {
 		var keys = Object.keys(times);
 		keys.sort();
 
-		System.Gadget.Flyout.show = false;
+		if(IS_SIDEBAR){
+			System.Gadget.Flyout.show = false;
+		}
 		$('table .row').remove();
+		
+		var rows = 0;
 		for (var time in times) {
 			for (var i = 0; i < times[time].length; i++) {
-				this.createRow(Battles.data[times[time][i]]);
+				var result = this.createRow(Battles.data[times[time][i]]);
+				if(result === true){
+					rows++;
+				}
 			}
 		}
+		
+		if(rows == 0){
+			var tr = $('<tr>');
+			tr.addClass('row');
+			var td = $('<td>');
+			td.attr('colspan', 3);
+			td.text('No Clan Wars');
+			tr.append(td);
+			$('table').append(tr);
+		}
+		
 		this.setBodyHeight();
 		console.log('refreshInfo() - done');
 	};
@@ -71,7 +91,7 @@ var GADGET = new function () {
 		// show only battles older then (now - 15 minutes)
 		var now = new Date();
 		if (battle.time > 0 && battle.time * 1000 < now.getTime() - 900000) { // battle time > 0 &&  battle time < now - 15min
-			//return;
+			return false;
 		}
 
 		var row = $('#rowTamplate').clone();
@@ -130,6 +150,8 @@ var GADGET = new function () {
 		row.attr('data', JSON.stringify(data));
 		$('table tbody').append(row);
 		row.show();
+		
+		return true;
 	};
 
 	this.onFlyoutHide = function () {
@@ -148,9 +170,16 @@ var GADGET = new function () {
 		//remove .selected from all rows
 		$('tr.selected').removeClass('selected');
 
-		System.Gadget.Flyout.file = "detail.html";
-		System.Gadget.Flyout.onHide = this.onFlyoutHide;
-		System.Gadget.Flyout.show = true;
+		if(IS_SIDEBAR){
+			System.Gadget.Flyout.file = "detail.html";
+			System.Gadget.Flyout.onHide = this.onFlyoutHide;
+			System.Gadget.Flyout.show = true;
+		}else{
+			$.support.cors = true;
+			$.get('detail.html', {}, function(data){
+				$('body').append(data);
+			});
+		}
 
 		$(obj).on('click', this.toggleDetail);
 		$(obj).addClass('selected');
@@ -171,6 +200,8 @@ var GADGET = new function () {
 
 	// Sets the height of the body
 	this.setBodyHeight = function () {
+		//	$('body').height(500+'px');
+		//	return;
 		var debug = $('#debug').height();
 		var height = Number($('table').height()) + Number(debug);
 		$('body').height(height+'px');

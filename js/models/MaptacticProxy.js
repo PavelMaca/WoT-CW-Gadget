@@ -2,7 +2,8 @@ var MaptacticProxy = new function(){
 	this.areas = {
 		'39_crimea': '3eb174e088051108064d3860730a925583b0a636',
 		'02_malinovka': 'f76238c0b9769ce88a2cb5f0a45e5c9adf0fcfbe',
-		'06_ensk': 'e5e2d236be49d0fee3369736e3215a5906f8744a'
+		'06_ensk': 'e5e2d236be49d0fee3369736e3215a5906f8744a',
+		'37_caucasus': '5833a9833006734c170d05a63d28c965548dbda2'
 		
 	};
 	
