@@ -5,7 +5,7 @@ var GADGET_DETAIL = new function () {
 
 	this.showInfo = function () {
 		console.log('showInfo()');
-		var data = $(System.Gadget.document).find('tr.selected').attr('data');
+		var data = $(System.Gadget.document).find('#list .row.selected').attr('data');
 		if (!data) {
 			console.log('no data');
 			return;

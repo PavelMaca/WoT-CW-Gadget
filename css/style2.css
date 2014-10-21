@@ -1,0 +1,140 @@
+/* 
+    Created on : 21.10.2014, 18:17:20
+    Author     : Pavel
+*/
+
+#header {
+	background-color: #3a392f;
+}
+
+#list,
+#detail {
+	background-color: #2a2823;
+}
+
+/** Layout */
+body
+{
+	margin: 0;
+	width: 170px;
+	font-family: Segoe UI;
+	font-size: 11px;
+}
+
+.clearfix{
+	clear: both;
+}
+
+#debug {
+	height: 200px;
+	overflow-y: scroll;
+	background-color: yellow;
+}
+
+/** Header */
+#header {
+	padding: 7px 0 7px 3px;
+	border-bottom: 2px solid #da3300;
+	width: 100%;
+	font-weight: bold;
+}
+#header #clanLogo{
+	padding: 0 7px 0 3px;
+	float: left;
+}
+
+#header #clanInfo{
+	width: 62%;
+	float: left;
+}
+
+#header h1 {
+	color: #f9f6dd;
+}
+
+#header h2 {
+	color: #929283;
+}
+
+#header #refresh {
+	padding-top: 2px;
+	cursor: pointer;
+}
+/** #Header */
+
+/** List */
+#list {
+	color: #929283;
+}
+
+#list .row {
+	padding: 5px 7px 3px 7px;
+	width: 100%;
+	border-bottom: 1px solid #555243;
+	cursor: pointer;
+}
+
+#list .row.selected {
+	background-color: #2d2c25;
+}
+
+#list .row .col-1,
+#list .row .col-2,
+#list .row .col-3 {
+	float: left;
+	text-align: center;
+	vertical-align: middle;
+}
+
+#list .row .col-1 {
+	width: 42px; //25%
+}
+
+#list .row .col-2 {
+	padding: 0 10px 0 10px;
+	width: 80px;
+}
+
+#list .row .col-3 {
+}
+
+#list a.url {
+	margin-top: 4px;
+	width: 16px;
+	height: 16px;
+	display: block;
+	background: url(../img/earth-white.png);
+	cursor: pointer;
+}
+
+#list #rowTamplate {
+	display: none;
+}
+
+#list .white{
+	color: #f9f6dd;
+}
+
+#list .gold{
+	color: #f9d088;
+}
+
+#list .battleTime,
+#list .map {
+	padding-bottom: 2px;
+}
+/** #List */
+
+/** Detail */
+
+#detail .row {
+	width: 100%;
+}
+
+#detail .col-1,
+#detail .col-2 {
+	float: left;	
+}
+/** #Detail */
+
+

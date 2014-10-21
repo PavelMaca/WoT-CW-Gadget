@@ -4,7 +4,7 @@
 
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<link rel="stylesheet" href="css/reset.css"/>
-		<link rel="stylesheet" href="css/style.css"/>
+		<link rel="stylesheet" href="css/style2.css"/>
 		
 		<script type="text/javascript" src="js/libs/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="js/libs/json2.js"></script>
@@ -23,61 +23,48 @@
 		<script type="text/javascript" src="js/app.js"></script>
 	</head>
 	<body id="index">
-		<table>
-			<thead>
-				<tr>
-					<th>Time</th>
-					<th>Map</th>
-					<th>
-						<a href="javascript:GADGET.loadBattles();">
-							<img src="img/icon_refresh.png" width="16" height="16"  />
-						</a>
-					</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr id="rowTamplate" style="display: none" onclick="GADGET.toggleDetail(this);">
-					<td>
-						<p class="battleTime">--:--</p>
-						<p class="timer"></p>
-					</td>
-					<td>
-						<p class="map">-</p>
-						<p class="province">-</p>
-					</td>
-					<td>
-						<a class="url" href="">&nbsp;</a>
-					</td>
-				</tr>
-			<!--	
-				<tr data-province-id="YU_08" onclick="GADGET.toggleDetail(this);">
-					<td>
-						<p class="battleTime">19:30</p>
-						<p class="timer">02:10:55</p>
-					</td>
-					<td>
-						<p class="map">Horský průsmyk</p>
-						<p class="province">Georgia</p>
-					</td>
-					<td>
-						<a class="url" href="http://google.com"></a>
-					</td>
-				</tr>
-				<tr data-province-id="EU_10" onclick="GADGET.toggleDetail(this);">
-					<td>
-						<p class="battleTime">19:30</p>
-						<p class="timer">02:10:55</p>
-					</td>
-					<td>
-						<p class="map">Horský průsmyk</p>
-						<p class="province">Georgia</p>
-					</td>
-					<td>
-						<a class="url" href="http://google.com"></a>
-					</td>
-				</tr>-->
-			</tbody>
-		</table>
+		<div id="header">
+			<img id="clanLogo" src="img/emblem_32x32.png" width="24" />
+			<div id="clanInfo">
+				<h1>THE0S</h1>
+				<h2>The 0ther Side</h2>
+			</div>
+			<img id="refresh" src="img/refresh-white.png" width="18" onclick="GADGET.loadBattles();" />
+			<div class="clearfix"></div>
+		</div>
+		
+		<div id="list">
+			<div class="row" id="rowTamplate" onclick="GADGET.toggleDetail(this);">
+				<div class="col-1">
+					<p class="battleTime white">19:30</p>
+					<p class="timer gold">01:23:20</p>
+				</div>
+				<div class="col-2">
+					<p class="map white">Mapa</p>
+					<p class="province">Provincie</p>
+				</div>
+				<div class="col-3">
+					<a class="url">&nbsp;</a>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+			<div class="row selected">
+				<div class="col-1">
+					<p class="time">19:30</p>
+					<p>01:23:20</p>
+				</div>
+				<div class="col-2">
+					<p>Mapa</p>
+					<p>Provincie</p>
+				</div>
+				<div class="col-3">
+					<a class="url">&nbsp;</a>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<a href="#">reload</a>
 		<div id="debug">DEBUG:</div>
 	</body>
 </html>

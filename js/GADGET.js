@@ -40,8 +40,6 @@ var GADGET = new function () {
 
 	this.refreshInfo = function () {
 		console.log('refreshInfo()');
-		
-		console.log(Battles.data.length);
 
 		var times = {};
 		for (var i = 0; i < Battles.data.length; i++) {
@@ -51,7 +49,6 @@ var GADGET = new function () {
 				times[time] = new Array();
 			}
 			times[time].push(i);
-			console.log(time);
 		}
 
 		var keys = Object.keys(times);
@@ -60,7 +57,7 @@ var GADGET = new function () {
 		if(IS_SIDEBAR){
 			System.Gadget.Flyout.show = false;
 		}
-		$('table .row').remove();
+		$('#list .row:not(#rowTamplate)').remove();
 		
 		var rows = 0;
 		for (var time in times) {
@@ -96,7 +93,6 @@ var GADGET = new function () {
 
 		var row = $('#rowTamplate').clone();
 		row.removeAttr('id');
-		row.addClass('row');
 		
 		var data = {};
 
@@ -148,14 +144,14 @@ var GADGET = new function () {
 		}
 
 		row.attr('data', JSON.stringify(data));
-		$('table tbody').append(row);
+		$('#list').append(row);
 		row.show();
 		
 		return true;
 	};
 
 	this.onFlyoutHide = function () {
-		$('tr.selected').removeClass('selected');
+		$('#list .row.selected').removeClass('selected');
 	};
 
 	this.toggleDetail = function (obj) {
@@ -168,7 +164,7 @@ var GADGET = new function () {
 
 	this.showDetail = function (obj) {
 		//remove .selected from all rows
-		$('tr.selected').removeClass('selected');
+		$('#list .row.selected').removeClass('selected');
 
 		if(IS_SIDEBAR){
 			System.Gadget.Flyout.file = "detail.html";
@@ -200,10 +196,10 @@ var GADGET = new function () {
 
 	// Sets the height of the body
 	this.setBodyHeight = function () {
-		//	$('body').height(500+'px');
-		//	return;
+		//$('body').height(500+'px'); return;
+
 		var debug = $('#debug').height();
-		var height = Number($('table').height()) + Number(debug);
+		var height = Number($('#list').height()) + Number($('#header').height()) + Number(debug);
 		$('body').height(height+'px');
 	}
 };
