@@ -123,18 +123,30 @@ body
 #list .map {
 	padding-bottom: 2px;
 }
+
+#list #emptyRow {
+	text-align: center;
+	padding: 7px 5px;
+}
 /** #List */
 
 /** Detail */
 
-#detail .row {
-	width: 100%;
+#detail #list .row {
+	padding: 7px 7px;
+	cursor: auto;
 }
 
-#detail .col-1,
-#detail .col-2 {
-	float: left;	
+#detail #list .row .col-1{
+	text-align: left;
+	width: 40px;
 }
+
+#detail #list .row .col-2{
+	text-align: right;
+	width: 70px;
+}
+
 /** #Detail */
 
 

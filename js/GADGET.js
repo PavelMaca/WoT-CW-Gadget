@@ -20,6 +20,8 @@ var GADGET = new function () {
 		//System.Gadget.Flyout.onShow = this.handleFlyoutShow;
 
 		WG_API.init(this.application_id, this.server, this.language);
+		
+		GADGET.setBodyHeight();
 
 		/** TODO udělat synchroně 
 		 Clans.addToQueue(this.clan_id);
@@ -57,7 +59,7 @@ var GADGET = new function () {
 		if(IS_SIDEBAR){
 			System.Gadget.Flyout.show = false;
 		}
-		$('#list .row:not(#rowTamplate)').remove();
+		$('#list .row').remove();
 		
 		var rows = 0;
 		for (var time in times) {
@@ -70,13 +72,9 @@ var GADGET = new function () {
 		}
 		
 		if(rows == 0){
-			var tr = $('<tr>');
-			tr.addClass('row');
-			var td = $('<td>');
-			td.attr('colspan', 3);
-			td.text('No Clan Wars');
-			tr.append(td);
-			$('table').append(tr);
+			$('#emptyRow').show();
+		}else{
+			$('#emptyRow').hide();
 		}
 		
 		this.setBodyHeight();
@@ -93,6 +91,7 @@ var GADGET = new function () {
 
 		var row = $('#rowTamplate').clone();
 		row.removeAttr('id');
+		row.addClass('row');
 		
 		var data = {};
 
@@ -197,9 +196,12 @@ var GADGET = new function () {
 	// Sets the height of the body
 	this.setBodyHeight = function () {
 		//$('body').height(500+'px'); return;
-
-		var debug = $('#debug').height();
-		var height = Number($('#list').height()) + Number($('#header').height()) + Number(debug);
+	
+		var header = $('#header').innerHeight();
+		var list = $('#list').innerHeight();
+		var debug = $('#debug').innerHeight();
+		
+		var height = Number(header) + Number(list) + Number(debug) + 20;
 		$('body').height(height+'px');
 	}
 };

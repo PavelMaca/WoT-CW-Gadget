@@ -34,7 +34,7 @@
 		</div>
 		
 		<div id="list">
-			<div class="row" id="rowTamplate" onclick="GADGET.toggleDetail(this);">
+			<div id="rowTamplate" onclick="GADGET.toggleDetail(this);">
 				<div class="col-1">
 					<p class="battleTime white">19:30</p>
 					<p class="timer gold">01:23:20</p>
@@ -48,19 +48,8 @@
 				</div>
 				<div class="clearfix"></div>
 			</div>
-			<div class="row selected">
-				<div class="col-1">
-					<p class="time">19:30</p>
-					<p>01:23:20</p>
-				</div>
-				<div class="col-2">
-					<p>Mapa</p>
-					<p>Provincie</p>
-				</div>
-				<div class="col-3">
-					<a class="url">&nbsp;</a>
-				</div>
-				<div class="clearfix"></div>
+			<div id="emptyRow">
+				No Clan Wars
 			</div>
 		</div>
 		<div class="clearfix"></div>
