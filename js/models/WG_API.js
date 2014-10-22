@@ -28,7 +28,7 @@ var WG_API = new function () {
 			if (data.status === 'ok') {
 				callback(data);
 			} else {
-				console.log(data);
+				console.log(JSON.stringify(data));
 			}
 		}
 		$.getJSON(this.url + section, params, success);
