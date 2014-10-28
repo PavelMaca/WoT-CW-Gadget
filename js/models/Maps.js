@@ -6,7 +6,7 @@ var Maps = new function () {
 		WG_API.getClanWarsMaps(function (data) {
 			console.log('Maps: loaded');
 			for (var i = 0; i < data.data.length; i++) {
-				Maps.data[i + 1] = data.data[i];
+				Maps.data[data.data[i].map_id] = data.data[i];
 			}
 
 			callback();

@@ -1,8 +1,5 @@
 var GADGET_DETAIL = new function () {
-	this.battle = false;
-	this.clan = false;
-	this.province = false;
-
+	
 	this.showInfo = function () {
 		console.log('showInfo()');
 		var data = $(System.Gadget.document).find('#list .row.selected').attr('data');
@@ -16,7 +13,7 @@ var GADGET_DETAIL = new function () {
 		$('.type').text(data.type);
 		
 		$('.map').text(data.area.name);
-		$('.map').attr('href', MaptacticProxy.getMapUrl(data.area.id, 'map'));
+		//$('.map').attr('href', MaptacticProxy.getMapUrl(data.area.id, 'map'));
 
 		$('.battleTime').text(data.battleTime);
 		
@@ -29,6 +26,7 @@ var GADGET_DETAIL = new function () {
 		
 		$('.income').text(data.income);
 		
+		/*
 		var minimap =  MaptacticProxy.getMapUrl(data.area.id, 'thumb');
 		if(minimap){
 			var img = $('<img />');
@@ -37,13 +35,18 @@ var GADGET_DETAIL = new function () {
 			img.attr('width', 168);
 			$('.mapImage').append(img);;
 		}
+		*/
 		
-		GADGET.setBodyHeight();
-
+		this.setBodyHeight();
 	};
-
-	this.refreshInfo = function () {
-
-	};
+	
+	// Sets the height of the body
+	this.setBodyHeight = function () {
+		var list = $('#list').innerHeight();
+		var debug = $('#debug').innerHeight();
+	
+		var height = Number(list) + Number(debug);
+		$('body').height(height+'px');
+	}
 
 };

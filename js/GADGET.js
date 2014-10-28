@@ -1,42 +1,59 @@
 var GADGET = new function () {
 
-	/** WG_API variables */
-	this.application_id = '074e2be687a9e965d9ae51d748840bd7';
+	/** @private */
 	this.server = 'eu';
-	this.language = 'cs';
-
-	/** Clan setting */
+	
+	/** @private */
 	this.clan_id = '500035588';
-	this.map_id = '1'; //TODO: načíst podle clanu (nově k dispozici)
+	this.map_id;
 
 	/**
-	 * @var int Refrash rate for CW info in secunds
+	 * @var int Refrash rate for CW info in seconds
+	 * @private
 	 */
-	this.refrashRate = 60;
+	this.refrashRate = 90;
 
 
 	this.init = function () {
+		this.setBodyHeight();
 		console.log('GADGET.init()');
-		//System.Gadget.Flyout.onShow = this.handleFlyoutShow;
-
-		WG_API.init(this.application_id, this.server, this.language);
 		
-		GADGET.setBodyHeight();
-
-		/** TODO udělat synchroně 
-		 Clans.addToQueue(this.clan_id);
-		 Clans.loadQueue(function(){
-		 GADGET.clan = Clans.get(GADGET.clan_id);
-		 });
-		 */
+		this.loadSettings();
+		
+		setInterval(GADGET.loadBattles, this.refrashRate * 1000);
+	};
+	
+	this.loadSettings = function(){
+		Settings.init();
+		this.server = Settings.getServer();
+		this.clan_id = Settings.getClanId();
+		
+		var application_id = Settings.servers[this.server]['api'];
+		var language = Settings.getLanguage();
+		
+		WG_API.init(application_id, this.server, language);
+		
+		Maps.load();
+		this.showClanInfo();
+	};
+	
+	this.showClanInfo = function(){
+		WG_API.getClanDetail(this.clan_id, function(data){
+			var clanData = data.data[GADGET.clan_id];
+			$('#clanInfo h1').text(clanData.abbreviation);
+			$('#clanInfo h2').text(clanData.name);
+			$('#clanLogo').attr('src', clanData.emblems.small);
+			
+			GADGET.map_id = clanData.map_id;
+			
+			GADGET.loadBattles();
+		});
 	};
 
 	this.loadBattles = function () {
-		Maps.load(function () {
-			//setTimeout(this.reloadData, this.refrashRate * 1000);
-			Battles.reload(GADGET.clan_id, GADGET.map_id, function () {
-				GADGET.refreshInfo();
-			});
+		//setTimeout(this.reloadData, this.refrashRate * 1000);
+		Battles.reload(GADGET.clan_id, GADGET.map_id, function () {
+			GADGET.refreshInfo();
 		});
 	};
 
@@ -164,11 +181,11 @@ var GADGET = new function () {
 	this.showDetail = function (obj) {
 		//remove .selected from all rows
 		$('#list .row.selected').removeClass('selected');
-
+	
 		if(IS_SIDEBAR){
 			System.Gadget.Flyout.file = "detail.html";
 			System.Gadget.Flyout.onHide = this.onFlyoutHide;
-			System.Gadget.Flyout.show = true;
+		System.Gadget.Flyout.show = true;
 		}else{
 			$.support.cors = true;
 			$.get('detail.html', {}, function(data){
@@ -194,14 +211,12 @@ var GADGET = new function () {
 	};
 
 	// Sets the height of the body
-	this.setBodyHeight = function () {
-		//$('body').height(500+'px'); return;
-	
+	this.setBodyHeight = function () {	
 		var header = $('#header').innerHeight();
 		var list = $('#list').innerHeight();
 		var debug = $('#debug').innerHeight();
-		
-		var height = Number(header) + Number(list) + Number(debug) + 20;
+	
+		var height = Number(header) + Number(list) + Number(debug);
 		$('body').height(height+'px');
 	}
 };

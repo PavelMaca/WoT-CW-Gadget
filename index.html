@@ -8,6 +8,7 @@
 		
 		<script type="text/javascript" src="js/libs/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="js/libs/json2.js"></script>
+		<script type="text/javascript" src="js/libs/SettingsManager.js"></script>
 		
 		<script type="text/javascript" src="js/models/MaptacticProxy.js"></script>
 
@@ -18,16 +19,18 @@
 		<script type="text/javascript" src="js/models/Provinces.js"></script>
 		<script type="text/javascript" src="js/models/Battles.js"></script>
 		
+		<script type="text/javascript" src="js/models/Settings.js"></script>
+		
 		<script type="text/javascript" src="js/GADGET.js"></script>
 		<script type="text/javascript" src="js/GADGET_DETAIL.js"></script>
 		<script type="text/javascript" src="js/app.js"></script>
 	</head>
 	<body id="index">
 		<div id="header">
-			<img id="clanLogo" src="img/emblem_32x32.png" width="24" />
+			<img id="clanLogo" width="24" />
 			<div id="clanInfo">
-				<h1>THE0S</h1>
-				<h2>The 0ther Side</h2>
+				<h1></h1>
+				<h2></h2>
 			</div>
 			<img id="refresh" src="img/refresh-white.png" width="18" onclick="GADGET.loadBattles();" />
 			<div class="clearfix"></div>
@@ -36,12 +39,12 @@
 		<div id="list">
 			<div id="rowTamplate" onclick="GADGET.toggleDetail(this);">
 				<div class="col-1">
-					<p class="battleTime white">19:30</p>
-					<p class="timer gold">01:23:20</p>
+					<p class="battleTime white">--:--</p>
+					<p class="timer gold"></p>
 				</div>
 				<div class="col-2">
-					<p class="map white">Mapa</p>
-					<p class="province">Provincie</p>
+					<p class="map white"></p>
+					<p class="province">e</p>
 				</div>
 				<div class="col-3">
 					<a class="url">&nbsp;</a>
@@ -53,7 +56,7 @@
 			</div>
 		</div>
 		<div class="clearfix"></div>
-		<a href="#">reload</a>
+		<!--<a href="#">reload</a>-->
 		<div id="debug">DEBUG:</div>
 	</body>
 </html>

@@ -36,32 +36,25 @@ if (DEBUG !== true) {
 function init() {
 	console.log('init()');
 
-	if(IS_SIDEBAR){
+	if (IS_SIDEBAR) {
 		System.Gadget.settingsUI = "settings.html";
 	}
 
 	GADGET.init();
-	GADGET.loadBattles();
-
-
-	//System.Gadget.Flyout.file = "detail.html";
-	//System.Gadget.Flyout.show = true;
 }
-;
 
 function initDetail() {
 	console.log('initDetail()');
-
-	GADGET.init();
 	GADGET_DETAIL.showInfo();
-
 }
-;
 
 function initSettings() {
-	GADGET.init();
 	GADGET_SETTINGS.init();
-};
+}
+
+function settingsHaveChanged(){
+	console.log('setting changed');
+}
 
 // Init application
 $(document).ready(function () {

@@ -1,7 +1,12 @@
 var WG_API = new function () {
 
+	/** @private */
 	this.application_id = null;
+	
+	/** @private */
 	this.url = null;
+	
+	/** @private */
 	this.language = null;
 	
 	this.init = function (application_id, server, language) {
@@ -20,6 +25,7 @@ var WG_API = new function () {
 	 * @param {string} section
 	 * @param {object} params
 	 * @param {object} callback
+	 * @private
 	 */
 	this.callApi = function (section, params, callback) {
 		params.application_id = this.application_id;

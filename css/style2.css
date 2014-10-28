@@ -19,6 +19,7 @@ body
 	width: 170px;
 	font-family: Segoe UI;
 	font-size: 11px;
+	line-height: 14px;
 }
 
 .clearfix{
@@ -68,10 +69,8 @@ body
 }
 
 #list .row {
-	padding: 5px 7px 3px 7px;
 	width: 100%;
 	border-bottom: 1px solid #555243;
-	cursor: pointer;
 }
 
 #list .row.selected {
@@ -83,20 +82,8 @@ body
 #list .row .col-3 {
 	float: left;
 	text-align: center;
-	vertical-align: middle;
 }
 
-#list .row .col-1 {
-	width: 42px; //25%
-}
-
-#list .row .col-2 {
-	padding: 0 10px 0 10px;
-	width: 80px;
-}
-
-#list .row .col-3 {
-}
 
 #list a.url {
 	margin-top: 4px;
@@ -111,11 +98,12 @@ body
 	display: none;
 }
 
-#list .white{
+#list .white {
 	color: #f9f6dd;
 }
 
-#list .gold{
+#list .gold,
+#detail a {
 	color: #f9d088;
 }
 
@@ -130,11 +118,38 @@ body
 }
 /** #List */
 
+/** Index */
+#index #list .row {
+	padding: 5px 7px 3px 7px;
+	cursor: pointer;
+}
+
+
+#index #list .row .col-1 {
+	width: 42px; //25%
+}
+
+#index #list .row .col-2 {
+	padding: 0 10px 0 10px;
+	width: 80px;
+}
+
+#index #list .row .col-3 {
+}
+
+/** #Index */
+
 /** Detail */
+
+#detail #list {
+	overflow-x: hidden;
+}
 
 #detail #list .row {
 	padding: 7px 7px;
+	width: 153px;  //170- 2*7padding - 3border
 	cursor: auto;
+	border-right: 3px solid #555243;
 }
 
 #detail #list .row .col-1{
@@ -143,8 +158,21 @@ body
 }
 
 #detail #list .row .col-2{
+	padding: 0 7px 0 10px;
 	text-align: right;
-	width: 70px;
+	width: 96px; //113-17padding
+}
+
+#detail a {
+	text-decoration: none;
+}
+
+#detail .ico_gold {
+	background: url("../img/currency-ico.png") no-repeat scroll -13px 0 transparent;
+	display: inline-block;
+	height: 10px;
+	width: 13px;
+	padding: 0;
 }
 
 /** #Detail */
