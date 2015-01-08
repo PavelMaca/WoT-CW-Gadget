@@ -73,4 +73,12 @@ var WG_API = new function () {
 			'limit': limit
 		}, callback);
 	};
+	
+	this.getClanWarsTournaments = function (province_id, map_id, callback){
+		this.callApi('globalwar/tournaments/', {
+			'map_id': map_id,
+			'province_id': province_id,
+			'language': this.language
+		}, callback);
+	};
 };

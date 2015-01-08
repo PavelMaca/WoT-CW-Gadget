@@ -1,5 +1,5 @@
 // Global varialbes
-var DEBUG = true;
+var DEBUG = false;
 var IS_SIDEBAR = typeof (System) != "undefined";
 
 // Setup enviroment

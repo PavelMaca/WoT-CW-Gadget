@@ -1,10 +1,12 @@
 var GADGET = new function () {
 
 	/** @private */
-	this.server = 'eu';
+	this.server;
 	
 	/** @private */
-	this.clan_id = '500035588';
+	this.clan_id;
+	
+	/** @private */
 	this.map_id;
 
 	/**
@@ -20,7 +22,7 @@ var GADGET = new function () {
 		
 		this.loadSettings();
 		
-		setInterval(GADGET.loadBattles, this.refrashRate * 1000);
+		setInterval(this.loadBattles, this.refrashRate * 1000);
 	};
 	
 	this.loadSettings = function(){
@@ -45,13 +47,32 @@ var GADGET = new function () {
 			$('#clanLogo').attr('src', clanData.emblems.small);
 			
 			GADGET.map_id = clanData.map_id;
-			
+
 			GADGET.loadBattles();
 		});
 	};
 
 	this.loadBattles = function () {
-		//setTimeout(this.reloadData, this.refrashRate * 1000);
+		// dont use "this.property", don't work in scope of setInterval()
+		
+		// Try to refresh info about current map for clan
+		if(GADGET.clan_id && !GADGET.map_id){
+			console.log('not in map... refreshing map status');
+			WG_API.getClanDetail(GADGET.clan_id, function(data){
+				var clanData = data.data[GADGET.clan_id];
+				GADGET.map_id = clanData.map_id;
+				if(GADGET.map_id){
+					// reload only if map is set (could lead to loops)
+					GADGET.loadBattles();
+				}
+			});
+			return;
+		}
+		
+		if(!GADGET.clan_id || !GADGET.map_id){
+			return;
+		}
+		
 		Battles.reload(GADGET.clan_id, GADGET.map_id, function () {
 			GADGET.refreshInfo();
 		});
@@ -102,8 +123,9 @@ var GADGET = new function () {
 	this.createRow = function (battle) {
 		// show only battles older then (now - 15 minutes)
 		var now = new Date();
+		
 		if (battle.time > 0 && battle.time * 1000 < now.getTime() - 900000) { // battle time > 0 &&  battle time < now - 15min
-			return false;
+			//return false;
 		}
 
 		var row = $('#rowTamplate').clone();
@@ -162,7 +184,7 @@ var GADGET = new function () {
 		row.attr('data', JSON.stringify(data));
 		$('#list').append(row);
 		row.show();
-		
+			
 		return true;
 	};
 
